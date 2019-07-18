@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const sequelize = require('./db')
 
+app.use(require('./middleware/headers'))
 sequelize.sync();
 app.use(express.json());
-app.use(require('./middleware/headers'))
 
 const user = require('./controllers/userController')
 const post = require('./controllers/postController')

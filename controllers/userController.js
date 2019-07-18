@@ -9,13 +9,17 @@ router.post('/signup', (req, res) => {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10)
     })
-    .then(
-        createSuccess = (user) => {
+    .then(user => {
             let token = jwt.sign({id:user.id}, process.env.JWT_SECRET, {expiresIn: 60 * 60 * 24})
             res.json({
                 user: user,
                 message: 'user created',
                 sessionToken: token
+            })
+        },
+        err => {
+            res.json({
+                err
             })
         }
     )
