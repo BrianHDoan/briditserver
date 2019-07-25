@@ -4,7 +4,7 @@ const app = express();
 const sequelize = require('./db')
 
 app.use(require('./middleware/headers'))
-sequelize.sync({force:true});
+sequelize.sync();
 app.use(express.json());
 
 const user = require('./controllers/userController')
