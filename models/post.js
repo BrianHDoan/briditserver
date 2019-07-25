@@ -8,11 +8,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         userId: {
             type: DataTypes.INTEGER,
             allowNull: false
         }
-        
     });
 
     return Post;
